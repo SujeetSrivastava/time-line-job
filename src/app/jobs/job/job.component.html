@@ -1,0 +1,79 @@
+<div class="row add-job-button">
+    <div class="col-sm-12">
+        <button class="btn btn-success" (click)="onAddNewJob()">Add New Jobs</button>
+    </div>
+</div>
+<div class="row job-add-comp" *ngIf = "showAdd">
+    <form>
+      <div class="col-sm-12"> 
+        <div class="row add-job-header-row">
+          <div class="col-sm-9 add-job-header-title">
+            <span><strong>Jobs</strong></span>
+          </div>
+          <div class="col-sm-3">
+            <button class="btn-delete">
+              <img 
+                src="./assets/image/delete.png" 
+                alt=""
+              >
+            </button>
+          </div>
+        </div>
+        <div class="row add-job-data">
+          <div class="col-sm-5">
+            <div class="row form-group" >
+              <div class="col-sm-12 add-job-overflow">
+                  <ul style="list-style:none;">
+                      <li 
+                      [ngClass]="{'slectedItem': activeJobName===jobEl.name}"
+                      *ngFor="let jobEl of jobsList; let i = index" 
+                      (click)="onSelectedJob(jobEl)"
+                      #jobIndex>{{jobEl.name}}</li>
+                    </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-7 add-job-time">
+              <div class="add-job-time-title">
+                <strong>Start Time</strong>
+              </div>
+            <div class="row" style="text-align:center;">
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group add-job-time-hours">
+                        <span>hours</span><br>
+                        <button (click)="decreaseOneHour()"><span>&#8679;</span></button>
+                        <div #hours>
+                          {{hourCount}}
+                        </div>
+                        <button (click)="increaseOneHour()"><span>&#8681;</span></button>
+                    </div>
+                      
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group add-job-time-minute">
+                        <span>minutes</span><br>
+                        <button (click)="decreaseOneMinute()"><span>&#8679;</span></button>
+                        <div #minutes>
+                          {{minutesCount}}
+                        </div>
+                        <button (click)="increaseOneMinute()"><span>&#8681;</span></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top:3px; padding-bottom:3px;">
+          <div class="col-sm-6">
+            <button class="btn btn-default" style="width:70px; height:30px" (click)="onCancel()"> Cancel</button>
+          </div>
+          <div class="col-sm-6">
+            <button class="btn btn-primary" style="width:70px; height:30px" (click)="onAddJobs()">Done</button>
+          </div>
+        </div>
+      </div>
+    </form>
+</div>

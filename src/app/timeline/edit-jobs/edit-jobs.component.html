@@ -1,0 +1,77 @@
+<div class="row" style="border:1px solid gray; margin-right:30px; padding-left:5px;">
+    <form>
+      <div class="col-sm-12">
+        <div class="row" style="border-bottom:1px solid gray; margin-right:0px;; padding-bottom:3px; padding-top:3px;">
+          <div class="col-sm-9" style="vertical-align:-webkit-baseline-middle">
+            <span style="position:relative; top:5px; left:10px;"><strong>Edit Jobs</strong></span>
+          </div>
+          <div class="col-sm-3">
+            <button 
+              style="background-color:white; height:30px;width:30px;">
+              <img 
+                src="./assets/image/delete.png" 
+                alt="" 
+                style="width:30px; height:30px; position:relative; right: 8px; bottom: 3px;"
+              >
+            </button>
+          </div>
+        </div>
+        <div class="row" style="border-bottom:1px solid gray; margin-right:0px; padding-bottom:5px;">
+          <div class="col-sm-5">
+            <div class="row form-group" >
+              <div class="col-sm-12" style="max-height:100px; overflow:scroll;">
+                  <ul style="list-style:none;">
+                      <li 
+                      style="position:relative; right:30px;" 
+                      *ngFor="let jobEl of jobsList; let i = index" 
+                      [ngClass]="{'slectedItem': activeJobName===jobEl.name}"
+                      #jobIndex>{{jobEl.name}}</li>
+                    </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-7" style="border-left:1px solid gray;">
+              <div 
+                style="border:1px solid gray; margin-bottom:2px; margin-top:2px; width:100px; text-align:center;">
+                <strong>Start Time</strong>
+              </div>
+            <div class="row" style="text-align:center;">
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group" style="border:1px solid gray; width:30px; text-align:center;">
+                        <span style="font-size:8px;">hours</span><br>
+                        <button style="height:22px; width:25px;" (click)="decreaseOneHour()"><span style="position: relative; right: 2px;">&#8679;</span></button>
+                        <div style="height:20px; width:20px; text-align:center;" #hours>
+                          {{hourCount}}
+                        </div>
+                        <button style="height:22px; width:25px;" (click)="increaseOneHour()"><span style="position: relative; right: 2px;">&#8681;</span></button>
+                    </div>
+                      
+                  </div>
+                  <div class="col-sm-6">
+                    <div style="border:1px solid gray; width:30px; text-align:center;" class="form-group">
+                        <span style="font-size:8px;">minutes</span><br>
+                        <button style="height:22px; width:22px; text-align:center;" (click)="decreaseOneMinute()"><span style="position: relative; right: 2px;">&#8679;</span></button>
+                        <div style="height:20px; width:20px; text-align:center;" #minutes>
+                          {{minutesCount}}
+                        </div>
+                        <button style="height:22px; width:22px; text-align:center;" (click)="increaseOneMinute()"><span style="position: relative; right: 2px;">&#8681;</span></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top:3px; padding-bottom:3px;">
+          <div class="col-sm-6">
+            <button class="btn btn-default" style="width:70px; height:30px" (click)="onCancelEdit()"> Cancel</button>
+          </div>
+          <div class="col-sm-6">
+            <button class="btn btn-primary" style="width:70px; height:30px" (click)="onEditJobs()">Done</button>
+          </div>
+        </div>
+      </div>
+    </form>
+</div>

@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-sm-12" style="border:1px solid gray; height:60px">
+    <div class="row">
+        <app-assigned-job 
+          *ngFor="let jobEl of assignedJobs; let i = index"
+          [job]="jobEl"
+          style="float:left; border:1px solid gray; height:58px;"
+          [style.background-color]="jobEl.color"
+          [style.width]="jobEl.minutesAllocated + '%'"
+          [style.margin-right]="jobEl.minuteGap + '%'"
+          [style.margin-left]="jobEl.minuteGapBefore + '%'"
+          (click)="onEditClick(jobEl)"
+        ></app-assigned-job>
+    </div>
+  </div>
+  <div style="width:4.1%; float:left;" class="lastChild" *ngFor="let jobIndex of totalTimeLineIndex; let j=index;">{{j}}</div>
+</div>
+
+<div class="row" *ngIf = "showEdit">
+  <hr/>
+  <div class="col-sm-4">
+      <app-edit-jobs
+      [job] = "selectedJob"
+      ></app-edit-jobs>
+  </div>
+</div>
